@@ -1,0 +1,49 @@
+# Exclude Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Exclude virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Exclude IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Exclude OS files
+.DS_Store
+Thumbs.db
+
+# Exclude workspace/test data
+perf_ws_*/
+review_ws_*/
+architect_test_*/
+vault*/
+gen.json
+
+# Exclude logs
+logs/
+*.log
+
+# Exclude local config (if any)
+.env
+.env.local
+config.local.json
+
+# Exclude data files (genetic memory, sensory logs)
+data/genetic_memory.json
+data/sensory_logs.json
+data/phantom_*.json
+data/test_*.json

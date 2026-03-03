@@ -1,0 +1,62 @@
+{
+    "robust_divider": {
+        "lineage": [
+            {
+                "version": "1.0.0",
+                "ts": "2026-03-02T10:23:25.578376",
+                "reason": "phantom_analysis: fragility=0.0",
+                "dna_hash": "73a3d0ab893144263cdca3521d011917ebaee766b3f7fc65dcfc3d26620c95f3",
+                "status": "healthy",
+                "genetic_score": 1.0,
+                "source": "@brick(\"robust_divider\", description=\"Robust division with full input validation\")\ndef robust_divider(a: float, b: float) -> float:\n    \"\"\"Safely divides a by b with full edge case handling.\"\"\"\n    if a is None or b is None:\n        return 0.0\n    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):\n        return 0.0\n    import math\n    if math.isnan(a) or math.isnan(b):\n        return 0.0\n    if math.isinf(a) or math.isinf(b):\n        return 0.0\n    if b == 0 or b == -0.0:\n        return 0.0\n    try:\n        result = a / b\n        if math.isnan(result) or math.isinf(result):\n            return 0.0\n        return result\n    except Exception:\n        return 0.0\n"
+            }
+        ],
+        "active_version": "1.0.0",
+        "dna_hash": "73a3d0ab893144263cdca3521d011917ebaee766b3f7fc65dcfc3d26620c95f3"
+    },
+    "fragile_parser": {
+        "lineage": [
+            {
+                "version": "1.0.0",
+                "ts": "2026-03-02T10:23:25.582378",
+                "reason": "phantom_analysis: fragility=0.824",
+                "dna_hash": "70cc8c8b16e859e6ae782ce77e1d1f6eb4949fb77c8edca9656e1b3321bce5c6",
+                "status": "fragile",
+                "genetic_score": 0.176,
+                "source": "@brick(\"fragile_parser\", description=\"Fragile JSON key extractor with no validation\")\ndef fragile_parser(data: str) -> str:\n    \"\"\"Extracts a key from JSON string. No error handling at all.\"\"\"\n    import json\n    parsed = json.loads(data)\n    return parsed[\"name\"].upper().strip()\n"
+            }
+        ],
+        "active_version": "1.0.0",
+        "dna_hash": "70cc8c8b16e859e6ae782ce77e1d1f6eb4949fb77c8edca9656e1b3321bce5c6"
+    },
+    "medium_processor": {
+        "lineage": [
+            {
+                "version": "1.0.0",
+                "ts": "2026-03-02T10:23:25.586377",
+                "reason": "phantom_analysis: fragility=0.1547",
+                "dna_hash": "88f610c1bd63b176a224c6a44cd40bb883c4b72da63608f7136d5210a3bad44b",
+                "status": "healthy",
+                "genetic_score": 0.8453,
+                "source": "@brick(\"medium_processor\", description=\"Processes a list of numbers with partial validation\")\ndef medium_processor(numbers: list, factor: int) -> list:\n    \"\"\"Multiplies each number by factor. Some validation.\"\"\"\n    if not numbers:\n        return []\n    if factor is None:\n        raise ValueError(\"Factor cannot be None\")\n    return [n * factor for n in numbers]\n"
+            }
+        ],
+        "active_version": "1.0.0",
+        "dna_hash": "88f610c1bd63b176a224c6a44cd40bb883c4b72da63608f7136d5210a3bad44b"
+    },
+    "sqrt_brick": {
+        "lineage": [
+            {
+                "version": "1.0.0",
+                "ts": "2026-03-02T10:23:25.589874",
+                "reason": "phantom_analysis: fragility=0.236",
+                "dna_hash": "e02295c52ccab4cb69c4ba2f06819eebb1d6dc4e438e4277baa1e6267528537d",
+                "status": "healthy",
+                "genetic_score": 0.764,
+                "source": "@brick(\"sqrt_brick\", description=\"Computes square root\")\ndef sqrt_brick(value: float) -> float:\n    \"\"\"Computes the square root of a value.\"\"\"\n    import math\n    if value is None:\n        raise TypeError(\"Cannot compute sqrt of None\")\n    return math.sqrt(value)\n"
+            }
+        ],
+        "active_version": "1.0.0",
+        "dna_hash": "e02295c52ccab4cb69c4ba2f06819eebb1d6dc4e438e4277baa1e6267528537d"
+    }
+}
