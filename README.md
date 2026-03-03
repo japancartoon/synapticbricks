@@ -29,10 +29,17 @@ Think of it as **an immune system for your code**.
 ### Installation
 
 ```bash
-pip install synapticbricks
+pip install git+https://github.com/japancartoon/synapticbricks.git
 ```
 
-### Hello World (Self-Healing Edition)
+Or install from source:
+```bash
+git clone https://github.com/japancartoon/synapticbricks.git
+cd synapticbricks
+pip install -e .
+```
+
+### Hello World (No API Required!)
 
 ```python
 from synapticbricks.core import brick
@@ -50,37 +57,65 @@ hello.add_test(
     label="test_greeting"
 )
 
-# Run it - if it breaks, it attempts to self-heal!
+# Run it - works immediately, no config needed!
 result = hello("World")
 print(result)  # "Hello, World!"
 ```
+
+**✅ Works instantly - no API keys, no configuration!**
+
+### Optional: AI-Powered Healing
+
+For **autonomous LLM-powered repair**, you can optionally add an API key:
+
+```python
+from synapticbricks.core import BrickEngine, AIHealer
+
+# Optional: Enable AI healing
+engine = BrickEngine()
+healer = AIHealer(api_key="your-gemini-api-key", engine=engine)
+
+# Now broken bricks will attempt AI-powered repair
+# But this is OPTIONAL - the framework works fine without it!
+```
+
+**Note:** AI healing is **optional**. All core features (security, testing, monitoring) work without any API.
 
 ---
 
 ## 🔥 Key Features
 
-### 1. **Self-Healing**
-When code breaks, SynapticBricks attempts automatic repair:
-- Analyzes the error
-- Generates a fix
-- Tests the fix
-- Applies if successful
-
-### 2. **Security Auditing**
+### 1. **Security Auditing** (No API Required)
 Every brick is automatically scanned for:
 - Dangerous code patterns (`eval`, `exec`, `os.system`)
 - Input validation issues
 - Security vulnerabilities
 
-Scored 0-100 across 5 dimensions.
+Scored 0-100 across 5 dimensions. **Works immediately, no configuration!**
 
-### 3. **Genetic Evolution**
+### 2. **Self-Testing** (No API Required)
+Add tests to your bricks:
+```python
+my_brick.add_test(inputs={...}, expected_output=..., label="test")
+```
+Tests run automatically and validate your code.
+
+### 3. **Genetic Evolution** (No API Required)
 Failed executions create "genetic memory":
 - Stores failure patterns
 - Learns edge cases
 - Evolves better code over time
 
-### 4. **Global Healing Network** (Coming Soon)
+### 4. **AI-Powered Healing** (Optional - Requires API Key)
+When code breaks, SynapticBricks can attempt automatic repair using LLMs:
+- Analyzes the error
+- Generates a fix
+- Tests the fix
+- Applies if successful
+
+**This is OPTIONAL** - You can use SynapticBricks without any API keys!
+
+### 5. **Global Healing Network** (Coming Soon)
 When one instance heals a brick, the cure spreads to all users.
 
 ---
@@ -290,6 +325,40 @@ MIT License - See [LICENSE](LICENSE) file
 - AI healing requires API access (optional)
 - Phantom executor has edge cases (ironic, we know)
 - Dashboard (Pulse) is early alpha
+
+---
+
+## ❓ FAQ
+
+### Do I need an API key to use SynapticBricks?
+
+**No!** All core features work without any API keys:
+- ✅ Security auditing
+- ✅ Self-testing
+- ✅ Genetic evolution
+- ✅ Health monitoring
+
+**Optional:** AI-powered healing requires a Gemini API key, but you can skip this feature entirely.
+
+### How do I install it?
+
+```bash
+pip install git+https://github.com/japancartoon/synapticbricks.git
+```
+
+No configuration needed. It works immediately!
+
+### Is it free?
+
+Yes! MIT License - use it for anything, commercial or personal.
+
+### Does it send data anywhere?
+
+**No.** Unless you enable AI healing (optional), SynapticBricks runs 100% locally. No telemetry, no tracking.
+
+### Can I use it in production?
+
+Yes, but it's in beta. Test thoroughly. The security features are production-ready; AI healing is experimental.
 
 ---
 
