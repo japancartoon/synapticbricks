@@ -18,6 +18,9 @@ from .phantom import (
 )
 from .ai_healer import AIHealer, HealAttempt
 from .security import SecurityAuditor, SecurityReport
+from .config import configure, get_config, is_ai_enabled
+
+__version__ = "1.4.1"
 
 __all__ = [
     "brick",
@@ -49,4 +52,7 @@ __all__ = [
     "HealAttempt",
     "SecurityAuditor",
     "SecurityReport",
+    "configure",
+    "get_config",
+    "is_ai_enabled",
 ]

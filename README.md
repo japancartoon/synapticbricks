@@ -66,17 +66,43 @@ print(result)  # "Hello, World!"
 
 ### Optional: AI-Powered Healing
 
-For **autonomous LLM-powered repair**, you can optionally add an API key:
+For **autonomous LLM-powered repair**, enable AI features with one line:
 
 ```python
-from synapticbricks.core import BrickEngine, AIHealer
+import synapticbricks
 
-# Optional: Enable AI healing
-engine = BrickEngine()
-healer = AIHealer(api_key="your-gemini-api-key", engine=engine)
+# One-time setup (saves config to ~/.synapticbricks/config.json)
+synapticbricks.configure(api_key="YOUR_GEMINI_API_KEY")
+# ✅ AI healing enabled!
+```
 
-# Now broken bricks will attempt AI-powered repair
-# But this is OPTIONAL - the framework works fine without it!
+**Get a free API key:** https://ai.google.dev/
+
+After configuration, all your bricks get AI-powered self-healing automatically!
+
+```python
+from synapticbricks.core import brick
+
+@brick("divide")
+def divide(a: int, b: int) -> float:
+    return a / b
+
+# This breaks on divide(5, 0)
+# With AI enabled, it will attempt to add zero-division handling!
+result = divide(5, 0)  # Auto-heals and returns a safe result
+```
+
+**Environment variables (alternative):**
+```bash
+export SYNAPTICBRICKS_API_KEY="your-key-here"
+export SYNAPTICBRICKS_MODEL="gemini-2.5-flash"  # optional
+```
+
+**Check if AI is enabled:**
+```python
+import synapticbricks
+if synapticbricks.is_ai_enabled():
+    print("AI healing is active!")
 ```
 
 **Note:** AI healing is **optional**. All core features (security, testing, monitoring) work without any API.
@@ -339,6 +365,18 @@ MIT License - See [LICENSE](LICENSE) file
 - ✅ Health monitoring
 
 **Optional:** AI-powered healing requires a Gemini API key, but you can skip this feature entirely.
+
+### How do I enable AI healing?
+
+**Super easy - one line:**
+```python
+import synapticbricks
+synapticbricks.configure(api_key="YOUR_GEMINI_API_KEY")
+```
+
+Get a free API key at: https://ai.google.dev/
+
+The config is saved to `~/.synapticbricks/config.json` and works across all projects!
 
 ### How do I install it?
 
